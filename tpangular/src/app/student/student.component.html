@@ -1,0 +1,27 @@
+<div *ngIf="viewMode">
+  <div *ngIf="currentStudent.id">
+    <div>
+      <label><strong>Nom:</strong></label> {{ currentStudent.nom }}
+    </div>
+    <div>
+      <label><strong>Prenom:</strong></label> {{ currentStudent.prenom }}
+    </div>
+    <div>
+      <label><strong>Note:</strong></label> {{ currentStudent.note }}
+    </div>
+    <div>
+      <label><strong>Modules:</strong></label>
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between" *ngFor="
+            let module of currentStudent.modules">
+          <app-module [module]="module"></app-module>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+<div *ngIf="!viewMode">
+  <br />
+  <p>Cliquer sur un étudiant...</p>
+</div>

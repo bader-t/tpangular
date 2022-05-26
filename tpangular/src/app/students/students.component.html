@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-5 mt-3">
+    <h4>Add student</h4>
+    <form class="card p-2">
+      <div class="form-group ">
+        <label for="Nom">Nom</label>
+        <input type="text" class="form-control" id="Nom" placeholder="Nom" [(ngModel)]="addedStudent.nom"
+          [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group ">
+        <label for="Prenom">Prenom</label>
+        <input type="text" class="form-control" id="Prenom" placeholder="prenom" [(ngModel)]="addedStudent.prenom"
+          [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group ">
+        <label for="Note">Note</label>
+        <input type="number" class="form-control" id="Note" placeholder="Note" [(ngModel)]="addedStudent.note"
+          [ngModelOptions]="{standalone: true}">
+      </div>
+      <button (click)="addStudent()" class="btn btn-primary mt-3">Ajouter</button>
+    </form>
+  </div>
+  <div class="col-md-7 mt-3">
+    <h4>Student Details</h4>
+    <div class="card p-2">
+      <app-student [viewMode]="true" [currentStudent]="currentStudent"></app-student>
+    </div>
+  </div>
+
+  <div class="col-md-5 mt-3">
+    <h4>Students List</h4>
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between" *ngFor="
+        let student of students; let i = index
+      " [class.active]="i == currentIndex" (click)="setActiveStudent(student, i)">
+        <span>{{ student.nom }}</span>
+        <span>{{ student.note }}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-7 mt-3"></div>
+  <div class="col-md-5 mt-3">
+    <h4>Modules List</h4>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="
+          let module of modules" (click)="appendModule(module)">
+        <app-module [module]="module"></app-module>
+      </li>
+    </ul>
+  </div>
+</div>
